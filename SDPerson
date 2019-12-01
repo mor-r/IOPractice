@@ -1,0 +1,25 @@
+import java.io.*;
+
+public class SDPerson {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person对象.obj"));
+        Person person = (Person)ois.readObject();
+        System.out.println(person);
+        ois.close();
+        /*
+        Person person = new Person();
+        person.name = "abc";
+        person.age = 18;
+        person.sex = "女";
+        person.sn = 666666;
+
+        ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream("person对象.obj")
+        );
+
+        oos.writeObject(person);
+
+        oos.close();
+        */
+    }
+}
