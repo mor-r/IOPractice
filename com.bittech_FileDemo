@@ -1,0 +1,137 @@
+package com.bittech;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
+public class FileDemo {
+    public static void main(String[] args) throws IOException {
+        File file = new File("H:\\bit\\Java Web\\JW_project");
+        listAllFiles(file);//递归
+    }
+    //列出指定目录中的全部子目录信息
+    private static void listAllFiles(File file) {
+        if(file.isDirectory()){// 现在给定的file对象属于目录
+            File[] result=file.listFiles();//继续列出子目录内容
+            if(result!=null){
+                for(File file2:result){
+                    listAllFiles(file2);
+                }
+            }
+        }else{
+            System.out.println(file);// 给定的file是文件，直接打印
+        }
+    }
+        /*
+        File file=new File("H:\\bit\\Java Web\\JW_project");
+        if(file.exists()&&file.isDirectory()){
+            File[] result=file.listFiles();//列出目录中的全部内容
+            for(File file2:result){
+                System.out.println(file2);
+            }
+        }
+        */
+
+        /*
+        String path="H:\\bit\\Java Web\\JW_project\\FoundationIO1222\\";
+        String name="demo.txt";
+        String pathname=path+name;
+        File file=new File(pathname);
+        if(!file.exists()){
+            file.createNewFile();
+        }
+        System.out.println("文件"+name+"size:"+file.length());
+        System.out.println("文件"+name+"最近修改时间："+new Date(file.lastModified()));
+        */
+
+        /*
+        String path="H:\\bit\\Java Web\\JW_project\\FoundationIO1222\\";
+        String dir_name="demo_dir\\dir1\\dir2\\dir3";
+        String pathname=path+dir_name;
+        File file=new File(pathname);
+
+        File pfile=file.getParentFile();
+        if(!pfile.exists()){
+            pfile.mkdirs();
+            System.out.println("路径"+pfile.getAbsolutePath()+"不存在，创建");
+        }
+        if(!file.exists()){
+            file.createNewFile();
+        }
+        */
+
+        //System.out.println(file.getParent());
+
+        /*
+        String path="H:\\bit\\Java Web\\JW_project\\FoundationIO1222\\";
+        String dir_name="demo_dir";
+        //String dir_name="demo_dir\\dir1\\dir2\\dir3";
+        String pathname=path+dir_name;
+
+        File file=new File(pathname);
+        if(!file.exists()){
+            file.mkdir();//创建一个空目录
+            //file.mkdirs();//创建一个可能有多个目录的路径
+        }else{
+            System.out.println("路径已经存在，不需创建");
+        }
+        */
+
+        /*
+        System.out.println(File.separator);
+        //windows 下使用的是 \ ,而 Unix/Linux 系统下使用的是 /
+        //所以在使用路径分隔符时都会采用File类的一个常量 public static final String separator 来描述
+        //根据该分隔符，来确定自己的平台以及路径分隔符
+        */
+
+        /*
+        String path="H:\\bit\\Java Web\\JW_project\\FoundationIO1222\\";
+        String name="demo.txt";
+        String pathname=path+name;
+
+        File file=new File(pathname);
+        if(file.exists()){
+            file.delete();
+            System.out.println("文件"+pathname+"存在，删除之");
+        }else{
+            try {
+                file.createNewFile();
+                System.out.println("文件"+pathname+"不存在，创建之");
+            }catch(IOException e){
+                System.out.println("文件"+pathname+"创建失败");
+                e.printStackTrace();
+            }
+        }
+        */
+
+        /*
+        if(!file.exists()){
+            try{
+                file.createNewFile();
+            }catch(IOException e){
+                System.out.println("文件"+pathname+"创建失败");
+            }
+        }else{
+            System.out.println("文件"+pathname+"已经存在，不许创建");
+        }
+        */
+
+        /*
+        boolean res=file.exists();
+        System.out.println("文件"+pathname+"是否存在："+res);
+
+        res=file.isDirectory();
+        System.out.println("文件"+pathname+"是否是目录："+res);
+
+        res=file.isFile();
+        System.out.println("文件"+pathname+"是否是文件："+res);
+
+        file.delete();
+        if(!file.exists()){
+            System.out.println("删除文件成功！");
+        }else{
+            System.out.println("删除文件失败！");
+        }
+        */
+    //}
+}
