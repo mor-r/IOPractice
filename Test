@@ -1,0 +1,18 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Test {
+    public static void main(String[] args) throws IOException {
+        //使用 FileInputStream 和 FileOutputStream 复制图片
+        FileInputStream fin=new FileInputStream("C:\\Users\\dell\\Pictures\\Saved Pictures\\79780646_3.jpg");
+        FileOutputStream fout=new FileOutputStream("C:\\Users\\dell\\Pictures\\Saved Pictures\\1K6242948-0.jpg");
+        int len=0;
+        byte[] buff=new byte[1024];
+        while((len=fin.read(buff))!=-1){
+            fout.write(buff,0,len);
+        }
+        fin.close();
+        fout.close();
+    }
+}
